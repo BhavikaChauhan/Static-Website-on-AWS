@@ -27,7 +27,7 @@ First, clone the repository to your local machine:
 git clone https://github.com/BhavikaChauhan/static-website-ci-cd.git
 cd static-website-ci-cd
 
-2. Configure AWS S3 Bucket
+### 2. Configure AWS S3 Bucket
 Log in to your AWS account.
 
 Create a new S3 bucket for hosting the static site.
@@ -36,12 +36,12 @@ Enable Static Website Hosting in the bucket settings.
 
 Make the files publicly accessible by setting the appropriate permissions.
 
-3. Set Up AWS CloudFront (Optional)
+### 3. Set Up AWS CloudFront (Optional)
 Create a CloudFront distribution to serve the website with a Content Delivery Network (CDN) for faster access and SSL support.
 
 Note the S3 website endpoint and CloudFront domain for later.
 
-4. Add AWS Credentials to GitHub
+### 4. Add AWS Credentials to GitHub
 Go to your GitHub repository settings and add the following secrets:
 
 AWS_ACCESS_KEY_ID: Your AWS Access Key ID.
@@ -52,7 +52,7 @@ AWS_REGION: The AWS region where your S3 bucket is located (e.g., us-east-1).
 
 S3_BUCKET_NAME: The name of your S3 bucket.
 
-5. Configure GitHub Actions Workflow
+### 5. Configure GitHub Actions Workflow
 The GitHub Actions workflow is defined in .github/workflows/deploy.yml. This will automatically deploy your site to AWS S3 when you push code to the main branch.
 
 Key Steps in the Workflow:
@@ -62,15 +62,17 @@ Configure AWS Credentials: It then configures AWS credentials using the secrets 
 
 Sync to S3: Finally, it syncs the files to your S3 bucket using the AWS CLI.
 
-6. Push Code to GitHub
+### 6. Push Code to GitHub
 Once everything is set up, push your local changes to GitHub:
 git add .
 git commit -m "Initial website setup"
 git push origin main
 This will trigger the GitHub Actions workflow to deploy your site automatically.
 
+
 🌐 Accessing the Website
 Once the workflow runs successfully, your website will be accessible through the S3 endpoint or CloudFront distribution URL.
+
 
 🧑‍💻 Contributing
 If you want to contribute to this project, feel free to fork the repository and make your changes. Pull requests are welcome!
