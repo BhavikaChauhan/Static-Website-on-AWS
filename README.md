@@ -1,78 +1,94 @@
-# Static Website Deployment with CI/CD on AWS
+# 🚀 Static Website Deployment with CI/CD on AWS
 
-This project demonstrates how to automate the deployment of a static website to **AWS S3** using **GitHub Actions** as part of a **CI/CD pipeline**. The pipeline ensures that every time changes are pushed to the `main` branch, the latest version of the website is deployed to S3.
+This project demonstrates how to automate the deployment of a static website to AWS S3 using GitHub Actions, and accelerate its delivery via CloudFront. The goal is to eliminate manual deployment steps and enable faster, secure, production-ready updates.
 
-## 🚀 Features
-- **Automated Deployment**: Every time code is pushed to the `main` branch, GitHub Actions automatically deploys the site to AWS S3.
-- **AWS CloudFront Integration**: Content is delivered via **CloudFront** for faster and secure access.
-- **Versioning and Rollback**: Versioning of files in S3 is enabled, ensuring safe deployments with rollback options in case of failures.
+> 🔗 **Read the full blog here:** [Medium Blog Post – Coming Soon](#)
 
-## 📦 Tech Stack
-- **AWS S3**: For hosting static website files.
-- **AWS CloudFront**: For content delivery with CDN.
-- **GitHub Actions**: For automating the CI/CD pipeline.
-- **HTML, CSS, JS**: For the static website content.
+---
 
-## 🛠️ Prerequisites
-Before setting up the project, make sure you have the following:
-- **AWS Account**: An active AWS account to create the S3 bucket and CloudFront distribution.
-- **GitHub Account**: A GitHub account for creating the repository and configuring GitHub Actions.
-- **AWS CLI**: For managing AWS services via command line (optional but useful).
+## 📁 Project Structure
 
-## ⚙️ Setup Instructions
+```
 
-### 1. Clone the Repository
-First, clone the repository to your local machine:
-```bash
-git clone https://github.com/BhavikaChauhan/static-website-ci-cd.git
-cd static-website-ci-cd
+.
+├── .github/workflows/
+│   └── deploy.yml           # GitHub Actions CI/CD pipeline
+├── site/
+│   ├── index.html           # Main website file
+│   └── (other assets)       # CSS, JS, images, etc.
+├── README.md
 
-### 2. Configure AWS S3 Bucket
-Log in to your AWS account.
+```
 
-Create a new S3 bucket for hosting the static site.
+---
 
-Enable Static Website Hosting in the bucket settings.
+## ⚙️ What This Project Does
 
-Make the files publicly accessible by setting the appropriate permissions.
+✅ Automatically deploys static files in the `site/` folder to **AWS S3**
 
-### 3. Set Up AWS CloudFront (Optional)
-Create a CloudFront distribution to serve the website with a Content Delivery Network (CDN) for faster access and SSL support.
+✅ Uses **GitHub Actions** to automate build and deployment workflows
 
-Note the S3 website endpoint and CloudFront domain for later.
+✅ Configures **AWS CloudFront** for CDN-level speed and SSL support
 
-### 4. Add AWS Credentials to GitHub
-Go to your GitHub repository settings and add the following secrets:
+✅ Implements **version control + rollback** by tying deployments to commits
 
-AWS_ACCESS_KEY_ID: Your AWS Access Key ID.
+✅ Supports **cache invalidation** after each deployment
 
-AWS_SECRET_ACCESS_KEY: Your AWS Secret Access Key.
+---
 
-AWS_REGION: The AWS region where your S3 bucket is located (e.g., us-east-1).
+## 🛠️ Tools & Services Used
 
-S3_BUCKET_NAME: The name of your S3 bucket.
+| Tool            | Purpose                             |
+|-----------------|-------------------------------------|
+| AWS S3          | Host static website                 |
+| AWS CloudFront  | Serve content globally (CDN + SSL)  |
+| GitHub Actions  | Automate build and deployment       |
+| IAM             | Secure permissions and credentials  |
 
-### 5. Configure GitHub Actions Workflow
-The GitHub Actions workflow is defined in .github/workflows/deploy.yml. This will automatically deploy your site to AWS S3 when you push code to the main branch.
+---
 
-Key Steps in the Workflow:
-Checkout Code: The workflow first checks out the latest code.
+## 🚀 How It Works (CI/CD Flow)
 
-Configure AWS Credentials: It then configures AWS credentials using the secrets added in step 4.
+1. **Push code to GitHub**
+2. **GitHub Actions** triggers the workflow defined in `.github/workflows/deploy.yml`
+3. Website files in the `site/` folder are uploaded to **S3**
+4. **CloudFront cache is invalidated** to reflect changes instantly
 
-Sync to S3: Finally, it syncs the files to your S3 bucket using the AWS CLI.
+---
 
-### 6. Push Code to GitHub
-Once everything is set up, push your local changes to GitHub:
-git add .
-git commit -m "Initial website setup"
-git push origin main
-This will trigger the GitHub Actions workflow to deploy your site automatically.
+## 🔐 Secrets Required in GitHub
 
+Set the following secrets under your repository settings → Secrets:
 
-🌐 Accessing the Website
-Once the workflow runs successfully, your website will be accessible through the S3 endpoint or CloudFront distribution URL.
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `AWS_REGION` (e.g. `us-east-1`)
+- `S3_BUCKET_NAME`
+- `CLOUDFRONT_DISTRIBUTION_ID`
 
+---
 
-🧑‍💻 Contributing
-If you want to contribute to this project, feel free to fork the repository and make your changes. Pull requests are welcome!
+## 🌐 Live Demo
+
+🔗 [https://d613pmwca2u3u.cloudfront.net](https://d613pmwca2u3u.cloudfront.net)
+
+---
+
+## 📚 Blog Post
+
+> ✍️ A detailed walkthrough is available on Medium.  
+> 📌 [**Read the full blog here**](#)
+
+---
+
+## 🤝 Contributing
+
+Feel free to fork this repo and try it with your own AWS setup. Suggestions and PRs are welcome!
+
+---
+
+## 📩 Contact
+
+Made with ❤️ by [Bhavika Chauhan](https://www.linkedin.com/in/bhavika-chauhan-276b41332)
+
+```
