@@ -90,4 +90,3 @@ Feel free to fork this repo and try it with your own AWS setup. Suggestions and 
 ## 📩 Contact
 
 Made with 💻 by Bhavika Chauhan | bhavika.engineered@gmail.com | bhavika-engineered.kit.com
-```
